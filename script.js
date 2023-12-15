@@ -1,3 +1,22 @@
+// Función para validar el correo electrónico
+function validarCorreo() {
+    var correoElectronico = document.getElementById("correoElectronico").value;
+    var confirmarCorreo = document.getElementById("confirmarCorreo").value;
+
+    // Verificar que el correo electrónico contenga el símbolo @ y termine con "ejemplo.com"
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(correoElectronico) || !emailRegex.test(confirmarCorreo)) {
+        alert("Ingrese un correo electrónico válido en el formato ejemplo@dominio.com");
+        return;
+    }
+
+    // Verificar que los correos electrónicos sean iguales
+    if (correoElectronico === confirmarCorreo) {
+        alert("Correos electrónicos validados correctamente");
+    } else {
+        alert("Los correos electrónicos no coinciden. Por favor, ingréselos correctamente.");
+    }
+}
 // Función para validar el CURP
 function validarCURP() {
     var curp = document.getElementById("curp").value;
