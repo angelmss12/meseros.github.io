@@ -16,7 +16,7 @@
     <div class="formulario-section">
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del mesero" required>
-
+        
       <label for="nombre">Apellido Paterno:</label>
       <input type="text" id="nombre" name="paterno" placeholder="Ingrese el apellido paterno del mesero" required>
 
@@ -32,9 +32,11 @@
         <!-- Nuevo campo para repetir el CURP -->
         <label for="curpRepetido">CURP:</label>
         <input type="text" id="curpRepetido" name="curpRepetido" placeholder="Repita el CURP" required>
-        
-        <!-- Botón de validación del CURP -->
+
+        <!-- <Botón de validación del CURP -->
+        <div class="botonse">
         <button type="button" onclick="validarCURP()">Verificar CURP</button>
+        </div>
       </div>
 
         <!-- Sección para la fecha de nacimiento y sexo -->
@@ -54,26 +56,31 @@
 
       <!-- Sección para el número telefónico y confirmación -->
     <div class="formulario-section">
-        <label for="telefono">Número Telefónico:</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese el número telefónico" required>
-  
-        <label for="confirmarTelefono">Confirmación de Número Telefónico:</label>
-        <input type="tel" id="confirmarTelefono" name="confirmarTelefono" placeholder="Repita el número telefónico" required>
-      </div>
+            <label for="telefono">Número Telefónico:</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese el número telefónico" required>
+
+            <label for="confirmarTelefono">Confirmación de Número Telefónico:</label>
+            <input type="tel" id="confirmarTelefono" name="confirmarTelefono" placeholder="Repita el número telefónico" required>
+        </div>
 
       <!-- Sección para el correo electrónico y confirmación -->
-    <div class="formulario-section">
-        <label for="correoElectronico">Correo Electrónico:</label>
-        <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Ingrese el correo electrónico" required>
-  
-        <label for="confirmarCorreo">Confirmación de Correo Electrónico:</label>
-        <input type="email" id="confirmarCorreo" name="confirmarCorreo" placeholder="Repita el correo electrónico" required>
-      </div>
+     <div class="formulario-section">
+            <label for="correoElectronico">Correo Electrónico:</label>
+            <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Ingrese el correo electrónico" required>
+
+            <label for="confirmarCorreo">Confirmación de Correo Electrónico:</label>
+            <input type="email" id="confirmarCorreo" name="confirmarCorreo" placeholder="Repita el correo electrónico" required>
+        </div>
   
       <button type="button" onclick="limpiarFormulario()">Limpiar</button>
 
 
     <button type="submit">Guardar</button>
+
+    <footer>
+      <p>© 2023 Registro de Meseros. Todos los derechos reservados GORILA MARIN.</p>
+  </footer>
+
   </form>
   <script src="script.js"></script>
 
