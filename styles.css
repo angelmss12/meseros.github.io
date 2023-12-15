@@ -4,14 +4,20 @@ body {
 }
 
 .formulario-section {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-label{
+label {
   margin-left: 10px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
+input, select {
+  width: 100%;
+  box-sizing: border-box;
+}
 
 button {
   background-color: #070155;
@@ -20,9 +26,38 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  
+  margin-top: 10px;
+}
+
+form {
+  max-width: 600px; /* O ajusta según tus necesidades */
+  margin: 0 auto; /* Centra el formulario en la página */
 }
 
 @media screen and (max-width: 600px) {
-  /* Estilos específicos para pantallas pequeñas */
+  body {
+      margin: 10px;
+  }
+
+  label {
+      margin-left: 0;
+  }
+
+  button {
+      padding: 8px 12px;
+  }
+}
+
+
+h1{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+}
+
+.botonse{
+ margin-bottom: 20px;
+ margin-top: 10px;
 }
