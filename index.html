@@ -11,17 +11,20 @@
     <h1>Registro de Meseros</h1>
 <h3>Datos de trabajador</h3>
 
+
+<P>Complete los datos del trabajador que se solicita</P>
+
 <form>
     <!-- Sección para el registro de meseros -->
     <div class="formulario-section">
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del mesero" required>
+      <input type="text" id="nombre" name="nombre" placeholder="Ej. Raul" required>
         
       <label for="nombre">Apellido Paterno:</label>
-      <input type="text" id="nombre" name="paterno" placeholder="Ingrese el apellido paterno del mesero" required>
+      <input type="text" id="nombre" name="paterno" placeholder="Ej. Lopez" required>
 
       <label for="nombre">Apellido Materno:</label>
-      <input type="text" id="nombre" name="materno" placeholder="Ingrese el apellido materno del mesero" required>
+      <input type="text" id="nombre" name="materno" placeholder="Ej. Garcia" required>
     </div>
 
     <!-- Sección para el ingreso del CURP -->
@@ -57,7 +60,7 @@
       <!-- Sección para el número telefónico y confirmación -->
     <div class="formulario-section">
             <label for="telefono">Número Telefónico:</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese el número telefónico" required>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese el número telefónico" required onblur="validarTelefono()">
 
             <label for="confirmarTelefono">Confirmación de Número Telefónico:</label>
             <input type="tel" id="confirmarTelefono" name="confirmarTelefono" placeholder="Repita el número telefónico" required>
@@ -66,10 +69,10 @@
       <!-- Sección para el correo electrónico y confirmación -->
      <div class="formulario-section">
             <label for="correoElectronico">Correo Electrónico:</label>
-            <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Ingrese el correo electrónico" required>
+            <input type="email" id="correoElectronico" name="correoElectronico" placeholder="ejemplo@ejemplo.com" required>
 
             <label for="confirmarCorreo">Confirmación de Correo Electrónico:</label>
-            <input type="email" id="confirmarCorreo" name="confirmarCorreo" placeholder="Repita el correo electrónico" required>
+            <input type="email" id="confirmarCorreo" name="confirmarCorreo" placeholder="ejemplo@ejemplo.com" required>
         </div>
   
       <button type="button" onclick="limpiarFormulario()">Limpiar</button>
@@ -77,8 +80,10 @@
 
     <button type="submit">Guardar</button>
 
+    
+
     <footer>
-      <p>© 2023 Registro de Meseros. Todos los derechos reservados GORILA MARIN.</p>
+      <p>© 2023 Registro de Meseros.</p>
   </footer>
 
   </form>
