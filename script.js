@@ -1,3 +1,23 @@
+// Función para validar el número telefónico
+function validarTelefono() {
+    var telefono = document.getElementById("telefono").value;
+    var confirmarTelefono = document.getElementById("confirmarTelefono").value;
+
+    // Verificar que el número telefónico contenga solo números y tenga exactamente 10 dígitos
+    var telefonoRegex = /^\d{10}$/;
+    if (!telefonoRegex.test(telefono) || !telefonoRegex.test(confirmarTelefono)) {
+        alert("Ingrese un número telefónico válido de 10 dígitos (solo números)");
+        return;
+    }
+
+    // Verificar que los números telefónicos sean iguales
+    if (telefono === confirmarTelefono) {
+        alert("Números telefónicos validados correctamente");
+    } else {
+        alert("Los números telefónicos no coinciden. Por favor, ingréselos correctamente.");
+    }
+}
+
 // Función para validar el correo electrónico
 function validarCorreo() {
     var correoElectronico = document.getElementById("correoElectronico").value;
@@ -22,9 +42,9 @@ function validarCURP() {
     var curp = document.getElementById("curp").value;
     var curpRepetido = document.getElementById("curpRepetido").value;
 
-    // Verificar que el CURP tenga al menos 16 caracteres
-    if (curp.length < 16) {
-        alert("El CURP debe tener al menos 16 caracteres");
+    // Verificar que el CURP tenga al menos 18 caracteres
+    if (curp.length < 18) {
+        alert("El CURP debe tener al menos 18 caracteres");
         return;
     }
 
@@ -37,21 +57,26 @@ function validarCURP() {
 
 // Función para validar la edad mayor de 18 años
 function validarEdad() {
-    var fechaNacimiento = new Date(document.getElementById("fechaNacimiento").value);
-    var hoy = new Date();
-    var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    var edadInput = document.getElementById("edad");
+    var edad = edadInput.value;
 
-    if (hoy.getMonth() < fechaNacimiento.getMonth() ||
-        (hoy.getMonth() === fechaNacimiento.getMonth() && hoy.getDate() < fechaNacimiento.getDate())) {
-        edad--;
+    // Verificar que la edad contenga solo números
+    var edadRegex = /^\d+$/;
+    if (!edadRegex.test(edad)) {
+        alert("Ingrese un valor numérico para la edad");
+        edadInput.value = "";  // Limpiar el campo en caso de caracteres no numéricos
+        return;
     }
 
-    if (edad < 18) {
+    // Convertir la edad a número
+    var edadNumerica = parseInt(edad, 10);
+
+    // Verificar que la edad sea mayor de 18 años
+    if (edadNumerica < 18) {
         alert("Debe ser mayor de 18 años para registrarse como mesero");
-        document.getElementById("edad").value = "";
+        edadInput.value = "";
     }
 }
-
 // Función para limpiar el formulario
 function limpiarFormulario() {
     // Obtener todos los elementos de formulario
