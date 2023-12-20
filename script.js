@@ -7,9 +7,6 @@ function validarTelefono() {
     var telefonoRegex = /^\d{10}$/;
     if (!telefonoRegex.test(telefono) || !telefonoRegex.test(confirmarTelefono)) {
         alert("Ingrese un número telefónico válido de 10 dígitos (solo números)");
-        // Limpiar el campo de teléfono
-        document.getElementById("telefono").value = "";
-        document.getElementById("confirmarTelefono").value = "";
         return;
     }
 
@@ -50,7 +47,7 @@ function validarCURP() {
     if (curp.length >= 18 && curpRepetido.length >= 18) {
         // Realizar la validación solo si ambos campos tienen al menos 18 caracteres
         if (curp === curpRepetido) {
-            alert("Los CURP coinciden. CURP validado correctamente");
+            alert("CURP y Repetir CURP coinciden. CURP validado correctamente");
         } else {
             alert("Los CURP no coinciden. Por favor, ingréselos correctamente.");
         }
@@ -135,7 +132,32 @@ document.querySelectorAll('form input').forEach(function (input) {
     }
 });
 
-// Función para calcular la edad automáticamente al cambiar la fecha de nacimiento
-document.getElementById("fechaNacimiento").addEventListener("change", function () {
-    calcularEdad();
+// Función para calcular la fecha de nacimiento y la edad automáticamente al ingresar el CURP
+document.getElementById("curp").addEventListener("input", function () {
+    llenarDesdeCURP();
 });
+
+// Función para llenar automáticamente la fecha de nacimiento y calcular la edad desde el CURP
+function llenarDesdeCURP() {
+    var curp = document.getElementById("curp").value;
+
+    // Verificar que el CURP tenga al menos 10 caracteres
+    if (curp.length >= 10) {
+        // Extraer la fecha de nacimiento de los primeros 10 dígitos del CURP (formato: YYMMDD)
+        var año = parseInt(curp.substr(4, 2), 10);
+        var mes = parseInt(curp.substr(6, 2), 10);
+        var dia = parseInt(curp.substr(8, 2), 10);
+
+        // Ajustar el año para determinar el siglo (1900 o 2000)
+        año += (año < 30) ? 2000 : 1900;
+
+        // Construir la fecha de nacimiento en formato YYYY-MM-DD
+        var fechaNacimiento = año + "-" + ("0" + mes).slice(-2) + "-" + ("0" + dia).slice(-2);
+
+        // Asignar la fecha de nacimiento al campo correspondiente
+        document.getElementById("fechaNacimiento").value = fechaNacimiento;
+
+        // Calcular automáticamente la edad desde la fecha de nacimiento
+        calcularEdad();
+    }
+}
