@@ -7,6 +7,9 @@ function validarTelefono() {
     var telefonoRegex = /^\d{10}$/;
     if (!telefonoRegex.test(telefono) || !telefonoRegex.test(confirmarTelefono)) {
         alert("Ingrese un número telefónico válido de 10 dígitos (solo números)");
+        // Limpiar el campo de teléfono
+        document.getElementById("telefono").value = "";
+        document.getElementById("confirmarTelefono").value = "";
         return;
     }
 
@@ -37,22 +40,41 @@ function validarCorreo() {
         alert("Los correos electrónicos no coinciden. Por favor, ingréselos correctamente.");
     }
 }
+
 // Función para validar el CURP
 function validarCURP() {
     var curp = document.getElementById("curp").value;
     var curpRepetido = document.getElementById("curpRepetido").value;
 
-    // Verificar que el CURP tenga al menos 18 caracteres
-    if (curp.length < 18) {
-        alert("El CURP debe tener al menos 18 caracteres");
-        return;
+    // Verificar que ambos campos de CURP y Repetir CURP tengan al menos 18 caracteres
+    if (curp.length >= 18 && curpRepetido.length >= 18) {
+        // Realizar la validación solo si ambos campos tienen al menos 18 caracteres
+        if (curp === curpRepetido) {
+            alert("Los CURP coinciden. CURP validado correctamente");
+        } else {
+            alert("Los CURP no coinciden. Por favor, ingréselos correctamente.");
+        }
+    }
+}
+
+// Función para calcular la edad a partir de la fecha de nacimiento
+function calcularEdad() {
+    var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+    var fechaNacimientoDate = new Date(fechaNacimiento);
+    var hoy = new Date();
+    var edad = hoy.getFullYear() - fechaNacimientoDate.getFullYear();
+
+    // Ajustar la edad si el cumpleaños aún no ha pasado este año
+    if (hoy.getMonth() < fechaNacimientoDate.getMonth() || (hoy.getMonth() === fechaNacimientoDate.getMonth() && hoy.getDate() < fechaNacimientoDate.getDate())) {
+        edad--;
     }
 
-    if (curp === curpRepetido) {
-        alert("CURP validado correctamente");
-    } else {
-        alert("Los CURP no coinciden. Por favor, ingréselos correctamente.");
-    }
+    // Mostrar la edad en el campo correspondiente
+    var edadInput = document.getElementById("edad");
+    edadInput.value = edad;
+
+    // Validar la edad y reiniciar el campo si no es mayor de 18 años
+    validarEdad();
 }
 
 // Función para validar la edad mayor de 18 años
@@ -77,6 +99,7 @@ function validarEdad() {
         edadInput.value = "";
     }
 }
+
 // Función para limpiar el formulario
 function limpiarFormulario() {
     // Obtener todos los elementos de formulario
@@ -96,4 +119,23 @@ function limpiarFormulario() {
 document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();
     alert("Mesero registrado exitosamente");
+});
+
+// Función para validar el CURP automáticamente al ingresar datos
+document.getElementById("curp").addEventListener("input", function () {
+    validarCURP();
+});
+
+// Función para convertir a mayúsculas automáticamente (excepto en los campos de correo electrónico y sexo)
+document.querySelectorAll('form input').forEach(function (input) {
+    if (input.type !== "email" && input.id !== "sexo") {
+        input.addEventListener('input', function () {
+            this.value = this.value.toUpperCase();
+        });
+    }
+});
+
+// Función para calcular la edad automáticamente al cambiar la fecha de nacimiento
+document.getElementById("fechaNacimiento").addEventListener("change", function () {
+    calcularEdad();
 });
