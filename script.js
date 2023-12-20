@@ -47,7 +47,7 @@ function validarCURP() {
     if (curp.length >= 18 && curpRepetido.length >= 18) {
         // Realizar la validación solo si ambos campos tienen al menos 18 caracteres
         if (curp === curpRepetido) {
-            alert("CURP y Repetir CURP coinciden. CURP validado correctamente");
+            alert("Los CURP coinciden. CURP validado correctamente");
         } else {
             alert("Los CURP no coinciden. Por favor, ingréselos correctamente.");
         }
