@@ -28,12 +28,12 @@
 
         <!-- Sección para el ingreso del CURP -->
         <div class="formulario-section">
-            <label for="curp">CURP:</label>
-            <input type="text" id="curp" name="curp" placeholder="Ingrese el CURP del mesero" required oninput="llenarDesdeCURP()">
+            <<label for="curp">CURP:</label>
+            <input type="text" id="curp" name="curp" placeholder="Ingrese el CURP del mesero" required oninput="llenarDesdeCURP()" validarCURP()">
 
-            <!-- Nuevo campo para repetir el CURP -->
+            <!-- Campo para repetir el CURP -->
             <label for="curpRepetido">Repetir CURP:</label>
-            <input type="text" id="curpRepetido" name="curpRepetido" placeholder="Repita el CURP" required>
+            <input type="text" id="curpRepetido" name="curpRepetido" placeholder="Repita el CURP" required oninput="validarCURP()">
         </div>
 
         <!-- Sección para la fecha de nacimiento y sexo -->
