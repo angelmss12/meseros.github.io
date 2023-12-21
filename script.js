@@ -1,12 +1,13 @@
-// Función para validar el número telefónico
+// Función para validar el número telefónico de manera más flexible
 function validarTelefono() {
     var telefono = document.getElementById("telefono").value;
     var confirmarTelefono = document.getElementById("confirmarTelefono").value;
 
-    // Verificar que el número telefónico contenga solo números y tenga exactamente 10 dígitos
-    var telefonoRegex = /^\d{10}$/;
+    // Verificar que el número telefónico contenga solo dígitos y tenga una longitud aceptable
+    var telefonoRegex = /^\d{7,15}$/;
+
     if (!telefonoRegex.test(telefono) || !telefonoRegex.test(confirmarTelefono)) {
-        alert("Ingrese un número telefónico válido de 10 dígitos (solo números)");
+        alert("Ingrese un número telefónico válido (solo números y entre 7 y 15 dígitos)");
         return;
     }
 
@@ -17,6 +18,7 @@ function validarTelefono() {
         alert("Los números telefónicos no coinciden. Por favor, ingréselos correctamente.");
     }
 }
+
 
 // Función para validar el correo electrónico
 function validarCorreo() {
